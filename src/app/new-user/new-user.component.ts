@@ -31,8 +31,8 @@ export class NewUserComponent {
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     picture: [''],
-    gender: [''],
-    title: [''],
+    gender: ['', Validators.required],
+    title: ['', Validators.required],
     email: ['', Validators.required],
     phone: [''],
     street: [''],
@@ -65,17 +65,17 @@ export class NewUserComponent {
     this.user.registerDate = new Date().toISOString();
 
     console.log("🚀 ~ file: new-user.component.ts:69 ~ NewUserComponent ~ create ~ this.user:", this.user)
-   /*  if (this.form.valid) {
+    if (this.form.valid) {
       this.dummyApiService.createUser(this.user).subscribe(
         (response) => {
           alert("Usuário criado!")
           this.router.navigate(['../users']);
         },
         (error) => {
-          alert(error)
+          console.error(error)
         })
     }
- */
+
   }
 
 }

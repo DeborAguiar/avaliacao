@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col">
                 <label class="fw-semibold" for="genderSelect">Genero</label>
-                <select class="form-select" id="genderSelect" formControlName="gender" name="gender">
+                <select  [ngClass]="{'required': form.get('gender')?.invalid && form.get('gender')?.touched}" class="form-select" id="genderSelect" formControlName="gender" name="gender">
                     <option value="male">Homem</option>
                     <option value="female">Mulher</option>
                     <option value="other">Outro</option>
@@ -26,7 +26,7 @@
             </div>
             <div class="col">
                 <label class="fw-semibold" for="titleSelect">Título</label>
-                <select class="form-select" id="titleSelect" formControlName="title" name="title">
+                <select  [ngClass]="{'required': form.get('title')?.invalid && form.get('title')?.touched}" class="form-select" id="titleSelect" formControlName="title" name="title">
                     <option value="miss">Miss</option>
                     <option value="mr">Mr</option>
                     <option value="mrs">Mrs</option>
