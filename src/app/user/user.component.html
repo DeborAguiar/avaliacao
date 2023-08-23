@@ -1,0 +1,96 @@
+<span class="fs-2" routerLink="../../users" style="cursor: pointer;">
+    <i class="bi bi-arrow-left"></i>
+</span>
+<form [formGroup]="form" *ngIf="user" class="row p-4 pt-0">
+    <!-- (change) foi utilizado ao invez do (ngModelChange) pois o primeiro é executado
+         sempre que o valor do campo for alterado e o campo perder o foco -->
+    <div class="col-6">
+        <img class="w-100"
+            [src]="user.picture || 'https://t4.ftcdn.net/jpg/01/18/03/35/360_F_118033506_uMrhnrjBWBxVE9sYGTgBht8S5liVnIeY.jpg'">
+    </div>
+    <div class="col-6 ">
+        <label class="fw-semibold " for="firstName">Primeiro Nome</label>
+        <input [ngClass]="{'required': form.get('firstName')?.invalid}" formControlName="firstName" type="text"
+            class="form-control" (change)="saveChanges()" id="firstName" name="firstName">
+        <label class="fw-semibold" for="lastName">Sobrenome</label>
+        <input [ngClass]="{'required': form.get('lastName')?.invalid}" formControlName="lastName" type="text"
+            class="form-control" (change)="saveChanges()" id="lastName" name="lastName">
+        <label class="fw-semibold" for="picture">Imagem</label>
+        <input type="text" formControlName="picture" class="form-control" (change)="saveChanges()" id="picture"
+            name="picture">
+        <div class="row">
+            <div class="col">
+                <label class="fw-semibold" for="genderSelect">Genero</label>
+                <select formControlName="gender" class="form-select" (change)="saveChanges()" id="genderSelect"
+                    name="gender">
+                    <option value="male">Homem</option>
+                    <option value="female">Mulher</option>
+                    <option value="other">Outro</option>
+                </select>
+            </div>
+            <div class="col">
+                <label class="fw-semibold" for="titleSelect">Título</label>
+                <select formControlName="title" class="form-select" (change)="saveChanges()" id="titleSelect"
+                    name="title">
+                    <option value="miss">Miss</option>
+                    <option value="mr">Mr</option>
+                    <option value="mrs">Mrs</option>
+                    <option value="ms">Ms</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="form-group">
+            <label class="fw-semibold" for="email">Email</label>
+            <input type="text" class="form-control" id="email" formControlName="email" name="email">
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="form-group">
+            <label class="fw-semibold" for="phone">Telefone</label>
+            <input type="text" class="form-control" (change)="saveChanges()" id="phone" formControlName="phone"
+                name="phone">
+        </div>
+    </div>
+    <div class="col-7">
+        <div class="form-group">
+            <label class="fw-semibold" for="street">Endereço</label>
+            <input type="text" class="form-control" (change)="saveChanges()" id="street" formControlName="street"
+                name="street">
+        </div>
+    </div>
+    <div class="col-5">
+        <div class="form-group">
+            <label class="fw-semibold" for="city">Cidade</label>
+            <input type="text" class="form-control" (change)="saveChanges()" id="city" formControlName="city"
+                name="city">
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            <label class="fw-semibold" for="state">Estado</label>
+            <input type="text" class="form-control" (change)="saveChanges()" id="state" formControlName="state"
+                name="state">
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            <label class="fw-semibold" for="country">País</label>
+            <input type="text" class="form-control" (change)="saveChanges()" id="country" formControlName="country"
+                name="country">
+        </div>
+    </div>
+</form>
+<div class="row px-4 justify-content-between w-100">
+    <div class="col-4">
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+                (change)="disableForm()">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Editar</label>
+        </div>
+    </div>
+    <div class="col-5" *ngIf="form.invalid" style="color: red;">
+        Campos obrigatórios
+    </div>
+</div>
