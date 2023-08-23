@@ -1,0 +1,37 @@
+<div class="d-grid pt-2">
+    <button class="btn btn-primary" type="button" [routerLink]="'../create'">Criar</button>
+</div>
+<div id="contContent" class="row row-cols-1 mt-2">
+    <div class="col">
+        <ul class="list-group list-group-flush fs-5">
+            <li class="list-group-item" *ngFor="let user of users; let i = index">
+                <div class="row align-items-center">
+                    <div class="col-2">
+                        <img [src]="user.picture" class="w-100">
+                    </div>
+                    <a class="col-8" [routerLink]="['/user', user.id]">
+                        {{
+                        [
+                        user.title[0].toUpperCase() + user.title.slice(1).toLowerCase(),
+                        user.firstName,
+                        user.lastName
+                        ].join(' ')
+                        }}
+                    </a>
+                    <div class="col-2 d-flex justify-content-end">
+                        <button type="submit" class="btn btn-outline-danger"
+                            (click)="deleteUser(user.id)">Deletar</button>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <ul class="col pagination mt-auto w-100 justify-content-center">
+        <li class="page-item" *ngFor="let p of pages">
+            <a class="page-link" [class.active]="currentPage === p" (click)="changePage(p)">
+                {{ p }}
+            </a>
+        </li>
+    </ul>
+</div>
